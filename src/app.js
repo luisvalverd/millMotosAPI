@@ -4,7 +4,6 @@ require("dotenv").config();
 const morgan = require("morgan");
 const { json, urlencoded } = require("body-parser");
 const router = require("./routers/index.router");
-const routerAuth = require("./routers/auth.router");
 require("./database");
 
 // settings
@@ -21,7 +20,6 @@ app.use(
 
 // routers
 app.use("/api", router);
-app.use("/api", routerAuth);
 
 // initialization
 app.listen(app.get("port"), () => {

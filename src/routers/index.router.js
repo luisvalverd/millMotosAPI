@@ -23,6 +23,14 @@ const {
   updateProductModel,
 } = require("../controllers/update.products.controller");
 
+const {
+  newSellFinalConsumer,
+} = require("../controllers/sell.controllers/sellFinalConsumer.controller");
+
+const {
+  sellDataConsumer,
+} = require("../controllers/sell.controllers/sellDataConsumer.controller");
+
 router.get("/get-all-products", getAllProducts);
 
 // router of search products
@@ -36,6 +44,11 @@ router.post("/search-product-by-code", searchProductByCode);
 
 // router of add product
 router.post("/add-product", addProduct);
+
+// router of sell
+router.post("/sell-consumer-final", newSellFinalConsumer);
+
+router.post("/sell-consumer-data", sellDataConsumer);
 
 // routers of update products
 router.post("/update-product-stock", updateProductStock);

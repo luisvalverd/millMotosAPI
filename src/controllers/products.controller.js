@@ -1,15 +1,15 @@
 const Products = require("./../models/products.model");
 
 // create code
-async function createCodeProduct() {
+async function createCode() {
   let code = (Math.random() + 1).toString(36).substring(5);
   if (code.length > 7) {
-    return createCodeProduct();
+    return createCode();
   }
   Products.findOne({ code }, (err, product) => {
     try {
       if (product) {
-        return createCodeProduct();
+        return createCode();
       }
     } catch (e) {
       console.log(e);
@@ -23,10 +23,9 @@ async function addProduct(req, res) {
   const { name, description, mark, price, model, category, stock } = req.body;
 
   // find product code available
-  const code = await createCodeProduct();
+  const code = await createCode();
 
   // add product
-
   const newProduct = await new Products({
     name,
     description,
@@ -43,7 +42,6 @@ async function addProduct(req, res) {
 }
 
 async function getAllProducts(req, res) {
-  createCodeProduct();
   Products.find({}, (err, product) => {
     res.json(product);
   });
