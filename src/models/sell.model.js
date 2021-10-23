@@ -6,7 +6,7 @@ const Sell = new Schema({
     type: Schema.Types.ObjectId,
   },
   date: {
-    type: Date,
+    type: String,
     require: true,
     unique: false,
   },
@@ -16,6 +16,11 @@ const Sell = new Schema({
       type: Schema.Types.ObjectId,
     },
   ],
+  workforce: {
+    type: Number,
+    require: false,
+    unique: false,
+  },
   total: {
     type: Number,
     require: true,

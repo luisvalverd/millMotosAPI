@@ -28,6 +28,12 @@ async function newSellFinalConsumer(req, res) {
   // get list of products code to sell
   const listProducts = req.body.listProducts;
 
+  // date
+  let date = new Date().toLocaleDateString();
+
+  // workforce
+  let workforce = req.body.workforce;
+
   // create a new code for Sell
   const code = await createCodeSell();
 
@@ -40,6 +46,9 @@ async function newSellFinalConsumer(req, res) {
     listSell.push(product);
     total += product.price;
   }
+
+  // add workforce to total
+  total += workforce;
 
   // find a client with any data
   // if exist utilice that client else if create client
@@ -63,8 +72,9 @@ async function newSellFinalConsumer(req, res) {
 
     const newSellNotExistClient = await new Sell({
       client: newClient,
-      date: new Date(),
+      date,
       products: listSell,
+      workforce,
       total,
       code,
     });
@@ -76,8 +86,9 @@ async function newSellFinalConsumer(req, res) {
 
   const newSellExitsClient = await new Sell({
     client: client,
-    date: new Date(),
+    date,
     products: listSell,
+    workforce,
     total,
     code,
   });

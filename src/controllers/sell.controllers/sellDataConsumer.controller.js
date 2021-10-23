@@ -9,6 +9,12 @@ async function sellDataConsumer(req, res) {
   let total = 0;
   const listSell = [];
 
+  // workforce
+  let workforce = req.body.workforce;
+
+  // date
+  let date = new Date().toLocaleDateString();
+
   // this for save in listSell those products
   for (let i = 0; i < listProducts.length; i++) {
     const product = await Products.findOne({ code: listProducts[i] });
@@ -24,10 +30,7 @@ async function sellDataConsumer(req, res) {
 
   // create client if not exits
   const client = await Client.findOne({
-    name_client: dataClient.name,
     cedula: dataClient.cedula,
-    direction: dataClient.direction,
-    phone: dataClient.phone,
   });
 
   if (!client) {
@@ -39,8 +42,9 @@ async function sellDataConsumer(req, res) {
 
     const newSell = await new Sell({
       client: newClient._id,
-      date: new Date(),
+      date,
       products: listSell,
+      workforce,
       total,
       code,
     });
@@ -51,8 +55,9 @@ async function sellDataConsumer(req, res) {
 
   const newSell = await new Sell({
     client,
-    date: new Date(),
+    date,
     products: listSell,
+    workforce,
     total,
     code,
   });

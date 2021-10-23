@@ -10,7 +10,7 @@ const Client = new Schema({
   cedula: {
     type: String,
     require: false,
-    unique: true,
+    unique: false,
   },
   direction: {
     type: String,

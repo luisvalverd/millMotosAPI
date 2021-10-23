@@ -31,6 +31,10 @@ const {
   sellDataConsumer,
 } = require("../controllers/sell.controllers/sellDataConsumer.controller");
 
+const {
+  sellToday,
+} = require("../controllers/sell.controllers/viewSellToday.controller");
+
 router.get("/get-all-products", getAllProducts);
 
 // router of search products
@@ -49,6 +53,8 @@ router.post("/add-product", addProduct);
 router.post("/sell-consumer-final", newSellFinalConsumer);
 
 router.post("/sell-consumer-data", sellDataConsumer);
+
+router.post("/sells-today", sellToday);
 
 // routers of update products
 router.post("/update-product-stock", updateProductStock);
