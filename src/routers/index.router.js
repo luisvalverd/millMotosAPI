@@ -37,6 +37,10 @@ const {
 
 router.get("/get-all-products", getAllProducts);
 
+const {
+  weeklySell,
+} = require("../controllers/sell.controllers/sellweekly.controllers");
+
 // router of search products
 router.post("/search-product-by-name", searchProductByName);
 
@@ -55,6 +59,10 @@ router.post("/sell-consumer-final", newSellFinalConsumer);
 router.post("/sell-consumer-data", sellDataConsumer);
 
 router.post("/sells-today", sellToday);
+
+// find daily sales
+
+router.post("/sell-weekly", weeklySell);
 
 // routers of update products
 router.post("/update-product-stock", updateProductStock);

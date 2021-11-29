@@ -2,7 +2,8 @@ const Products = require("./../models/products.model");
 
 // create code
 async function createCode() {
-  let code = (Math.random() + 1).toString(36).substring(5);
+  let text = (Math.random() + 1).toString(36).substring(5);
+  let code = text.replace(/\s+/g, "");
   if (code.length > 7) {
     return createCode();
   }

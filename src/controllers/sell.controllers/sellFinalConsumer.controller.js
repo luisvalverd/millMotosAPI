@@ -32,8 +32,7 @@ async function newSellFinalConsumer(req, res) {
   let date = new Date().toLocaleDateString();
 
   // workforce
-  let workforce = req.body.workforce;
-
+  let workforce = req.body.workforce || 0;
   // create a new code for Sell
   const code = await createCodeSell();
 
